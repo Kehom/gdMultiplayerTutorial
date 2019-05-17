@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game_world.gd" type="Script" id=1]
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PanelPlayerList" type="Panel" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 190.0
+margin_bottom = 360.0
+
+[node name="lblLocalPlayer" type="Label" parent="HUD/PanelPlayerList"]
+margin_right = 110.0
+margin_bottom = 14.0
+text = "LocalPlayerName"
+
+[node name="boxList" type="VBoxContainer" parent="HUD/PanelPlayerList"]
+margin_top = 30.0
+margin_right = 180.0
+margin_bottom = 350.0
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="1" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 370, 140 )
+
+[node name="2" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 470, 140 )
+
+[node name="3" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 570, 140 )
+
+[node name="4" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 670, 140 )
+
+[node name="5" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 370, 240 )
+
+[node name="6" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 470, 240 )
+
+[node name="7" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 570, 240 )
+
+[node name="8" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 670, 240 )
+
+[node name="9" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 370, 340 )
+
+[node name="10" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 470, 340 )
+
+[node name="11" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 570, 340 )
+
+[node name="12" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 670, 340 )
+
+[node name="13" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 370, 440 )
+
+[node name="14" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 470, 440 )
+
+[node name="15" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 570, 440 )
+
+[node name="16" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 670, 440 )
