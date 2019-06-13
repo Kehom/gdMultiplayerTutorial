@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game_world.gd" type="Script" id=1]
+[ext_resource path="res://ui_chat.tscn" type="PackedScene" id=2]
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="btClearFocus" type="Button" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="PanelPlayerList" type="Panel" parent="HUD"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -23,6 +29,48 @@ text = "LocalPlayerName"
 margin_top = 30.0
 margin_right = 180.0
 margin_bottom = 350.0
+
+[node name="PanelServerInfo" type="Panel" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 450.0
+margin_top = 10.0
+margin_right = 600.0
+margin_bottom = 50.0
+
+[node name="lblServerName" type="Label" parent="HUD/PanelServerInfo"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "ServerName"
+
+[node name="lblPing" type="Label" parent="HUD/PanelServerInfo"]
+margin_top = 14.0
+margin_right = 40.0
+margin_bottom = 28.0
+text = "Ping: -"
+
+[node name="PanelFakeLatency" type="Panel" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 880.0
+margin_top = 10.0
+margin_right = 1010.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="HUD/PanelFakeLatency"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Simulate latency"
+
+[node name="txtFakeLatency" type="SpinBox" parent="HUD/PanelFakeLatency"]
+margin_top = 14.0
+margin_right = 74.0
+margin_bottom = 38.0
+max_value = 2000.0
+
+[node name="ChatRoot" parent="HUD" instance=ExtResource( 2 )]
+margin_left = 10.0
+margin_top = 300.0
+margin_right = 260.0
+margin_bottom = 590.0
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 editor/display_folded = true
@@ -74,3 +122,12 @@ position = Vector2( 570, 440 )
 
 [node name="16" type="Position2D" parent="SpawnPoints"]
 position = Vector2( 670, 440 )
+
+[node name="lblTMPDebug" type="Label" parent="."]
+margin_left = 360.0
+margin_top = 580.0
+margin_right = 1020.0
+margin_bottom = 594.0
+text = "asdf"
+[connection signal="pressed" from="HUD/btClearFocus" to="." method="_on_btClearFocus_pressed"]
+[connection signal="value_changed" from="HUD/PanelFakeLatency/txtFakeLatency" to="." method="_on_txtFakeLatency_value_changed"]

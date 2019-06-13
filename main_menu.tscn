@@ -120,7 +120,6 @@ margin_bottom = 100.0
 text = "Join"
 
 [node name="PanelPlayer" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 300.0
@@ -165,3 +164,5 @@ margin_bottom = 126.0
 text = "Default"
 [connection signal="pressed" from="PanelHost/btCreate" to="." method="_on_btCreate_pressed"]
 [connection signal="pressed" from="PanelJoin/btJoin" to="." method="_on_btJoin_pressed"]
+[connection signal="color_changed" from="PanelPlayer/btColor" to="." method="_on_btColor_color_changed"]
+[connection signal="pressed" from="PanelPlayer/btDefaultColor" to="." method="_on_btDefaultColor_pressed"]

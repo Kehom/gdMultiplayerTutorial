@@ -8,19 +8,14 @@ extends Node2D
 
 const speed_range = Vector2(150, 300)
 var dest_location = Vector2()
-onready var screen_limits = get_viewport_rect().size
 var start_pos = Vector2()
 var count_time = 0
 var current_time = 0
-
-# Replicated data
-slave var repl_position = Vector2()
-slave var repl_rotation = 0.0
-
+var color = Color(randf(), randf(), randf(), randf())
 
 func _ready():
 	# Calculate a random modulation color - randf() gives a random number in the interval [0,1]
-	$icon.modulate = Color(randf(), randf(), randf())
+	$icon.modulate = color
 	# And a random position - ideally this initial position should be placed on the spawn code
 	# however simplicity is required for the tutorial
 	position = get_random_location()
@@ -41,13 +36,6 @@ func _process(delta):
 			calculate_motion_vars()
 		
 		position = nposition
-		
-		# Replicate values
-		rset("repl_position", position)
-		rset("repl_rotation", rotation)
-	else:
-		position = repl_position
-		rotation = repl_rotation
 
 
 func get_random_location():
@@ -63,3 +51,9 @@ func calculate_motion_vars():
 	var angle = get_angle_to(dest_location) + (PI/2)   # Angle is in radians
 	rotate(angle)
 
+
+func update_state(state):
+	position = state.location
+	rotation = state.rot
+	color = state.col
+	$icon.modulate = color

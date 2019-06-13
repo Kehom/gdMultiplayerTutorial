@@ -11,6 +11,7 @@ func _ready():
 	network.connect("server_created", self, "_on_ready_to_play")
 	network.connect("join_success", self, "_on_ready_to_play")
 	network.connect("join_fail", self, "_on_join_fail")
+	get_tree().paused = false
 
 
 func set_player_info():
@@ -48,4 +49,13 @@ func _on_ready_to_play():
 
 func _on_join_fail():
 	print("Failed to join server")
+
+
+func _on_btColor_color_changed(color):
+	$PanelPlayer/PlayerIcon.modulate = color
+
+
+func _on_btDefaultColor_pressed():
+	$PanelPlayer/PlayerIcon.modulate = Color(1, 1, 1)
+	$PanelPlayer/btColor.color = Color(1, 1, 1)
 
