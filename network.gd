@@ -269,7 +269,7 @@ func _on_ping_timeout(peer_id):
 	# Update the ping signature that will be sent in the next request
 	ping_data[peer_id].signature += 1
 	# And request a new ping - no need to wait since we have already waited 5 seconds!
-	request_ping(peer_id)
+	call_deferred("request_ping", peer_id)
 
 
 func _on_ping_interval(peer_id):
